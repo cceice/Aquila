@@ -1,17 +1,31 @@
 import React from 'react';
 import { Modal, Card, Form, Input, Button, message } from 'antd';
+import '../css/Login.css';
+import axios from 'axios';
 
 function Login({ visible, onClose }) {
   const [form] = Form.useForm();
 
-  const handleLogin = (values) => {
+  const handleLogin = async (values) => {
+  try {
+    const response = await axios.post('http://localhost:5000/api/login', {
+      email: values.email,
+      password: values.password
+    });
+
     message.success({
-      content: 'Logged in successfully!',
+      content: response.data.message || 'Logged in successfully!',
       style: { marginTop: '20vh' },
     });
     form.resetFields();
     onClose();
-  };
+  } catch (error) {
+    message.error({
+      content: error.response?.data?.message || 'Invalid email or password!',
+      style: { marginTop: '20vh' },
+    });
+  }
+};
 
   const handleClear = () => {
     form.resetFields();
@@ -19,32 +33,21 @@ function Login({ visible, onClose }) {
 
   return (
     <Modal
+
       open={visible}
       onCancel={onClose}
       footer={null}
       centered
       closable={false}
       width={480}
-      bodyStyle={{ padding: 0 }}
-      style={{ borderRadius: '24px', overflow: 'hidden' }}
+      className="login-modal"
     >
-      <Card 
+      <Card
         bordered={false}
-        style={{ 
-          borderRadius: '24px', 
-          boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
-          padding: '20px 10px'
-        }}
+        className="login-card"
       >
-        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-          <h3 style={{ 
-            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-            fontWeight: '800',
-            fontSize: '18px',
-            letterSpacing: '0.05em',
-            color: '#000000',
-            margin: 0 
-          }}>
+        <div className="login-heading">
+          <h3 className="login-title">
             LOG IN TO ACCOUNT
           </h3>
         </div>
@@ -57,85 +60,44 @@ function Login({ visible, onClose }) {
         >
           <Form.Item
             name="email"
-            label={<span style={{ fontSize: '13px', fontWeight: '500', color: '#262626' }}>Email</span>}
+            label={<span className="login-label">Email</span>}
             rules={[
               { required: true, message: 'Please input your email!' },
-              { type: 'email', message: 'Please enter a valid email!' }
+              { type: 'email', message: 'Please enter a valid email!' },
             ]}
             style={{ marginBottom: '18px' }}
           >
-            <Input 
-              size="large" 
-              style={{ borderRadius: '8px', border: '1px solid #d9d9d9', height: '42px' }} 
-            />
+            <Input size="large" className="login-input" />
           </Form.Item>
 
           <Form.Item
             name="password"
-            label={<span style={{ fontSize: '13px', fontWeight: '500', color: '#262626' }}>Password</span>}
+            label={<span className="login-label">Password</span>}
             rules={[{ required: true, message: 'Please input your password!' }]}
             style={{ marginBottom: '30px' }}
           >
-            <Input.Password 
-              size="large" 
-              style={{ borderRadius: '8px', border: '1px solid #d9d9d9', height: '42px' }} 
-            />
+            <Input.Password size="large" className="login-input" />
           </Form.Item>
 
-          <div style={{ display: 'flex', gap: '15px', justifyContent: 'center' }}>
-            <Button 
+          <div className="login-button-group">
+            <Button
               type="primary"
               htmlType="submit"
               className="login-action-btn"
-              style={{
-                flex: 1,
-                backgroundColor: '#000000',
-                color: '#ffffff',
-                height: '42px',
-                borderRadius: '9999px',
-                fontWeight: '600',
-                fontSize: '14px',
-                border: 'none',
-                boxShadow: '0 4px 10px rgba(0,0,0,0.15)'
-              }}
             >
               Log in
             </Button>
 
-            <Button 
+            <Button
               type="default"
               onClick={handleClear}
               className="login-action-btn"
-              style={{
-                flex: 1,
-                backgroundColor: '#000000',
-                color: '#ffffff',
-                height: '42px',
-                borderRadius: '9999px',
-                fontWeight: '600',
-                fontSize: '14px',
-                border: 'none',
-                boxShadow: '0 4px 10px rgba(0,0,0,0.15)'
-              }}
             >
               Clear
             </Button>
           </div>
         </Form>
       </Card>
-
-      <style>{`
-        .login-action-btn {
-          transition: all 0.3s ease-in-out !important;
-        }
-        .login-action-btn:hover {
-          background-color: #ffffff !important;
-          color: #000000 !important;
-          border: 1px solid #000000 !important;
-          transform: translateY(-2px);
-          box-shadow: 0 6px 15px rgba(0,0,0,0.2) !important;
-        }
-      `}</style>
     </Modal>
   );
 }
