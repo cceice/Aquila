@@ -1,42 +1,61 @@
-.login-modal .ant-modal-body {
+.login-modal .ant-modal-content {
+  border-radius: 24px;
+  overflow: hidden;
   padding: 0;
 }
 
 .login-card {
-  border-radius: 12px;
+  border-radius: 24px;
+  padding: 20px 10px;
 }
 
-.login-heading {
+.login-title-wrapper {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+  margin-top: -10px;
 }
 
 .login-title {
-  font-family: Georgia, serif;
-  font-weight: normal;
-  letter-spacing: 0.1em;
-  color: #171717;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 550;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  color: #000000;
+  margin: 0;
 }
 
 .login-label {
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   color: #262626;
 }
 
 .login-input {
-  border-radius: 6px;
-  padding: 6px 11px;
-}
-
-.login-button-group {
-  display: flex;
-  gap: 10px;
+  border-radius: 8px !important;
+  border: 1px solid #d9d9d9 !important;
+  height: 42px !important;
 }
 
 .login-action-btn {
   flex: 1;
-  font-weight: 500;
+  background-color: #000000;
+  color: #ffffff;
   height: 42px;
   border-radius: 9999px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  margin-top: 13px;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.login-action-btn:hover {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #000000 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2) !important;
 }

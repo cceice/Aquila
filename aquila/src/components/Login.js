@@ -1,31 +1,18 @@
 import React from 'react';
 import { Modal, Card, Form, Input, Button, message } from 'antd';
 import '../css/Login.css';
-import axios from 'axios';
 
 function Login({ visible, onClose }) {
   const [form] = Form.useForm();
 
-  const handleLogin = async (values) => {
-  try {
-    const response = await axios.post('http://localhost:5000/api/login', {
-      email: values.email,
-      password: values.password
-    });
-
+  const handleLogin = (values) => {
     message.success({
-      content: response.data.message || 'Logged in successfully!',
+      content: 'Logged in successfully!',
       style: { marginTop: '20vh' },
     });
     form.resetFields();
     onClose();
-  } catch (error) {
-    message.error({
-      content: error.response?.data?.message || 'Invalid email or password!',
-      style: { marginTop: '20vh' },
-    });
-  }
-};
+  };
 
   const handleClear = () => {
     form.resetFields();
@@ -33,7 +20,6 @@ function Login({ visible, onClose }) {
 
   return (
     <Modal
-
       open={visible}
       onCancel={onClose}
       footer={null}
@@ -42,11 +28,8 @@ function Login({ visible, onClose }) {
       width={480}
       className="login-modal"
     >
-      <Card
-        bordered={false}
-        className="login-card"
-      >
-        <div className="login-heading">
+      <Card bordered={false} className="login-card">
+        <div className="login-title-wrapper">
           <h3 className="login-title">
             LOG IN TO ACCOUNT
           </h3>
@@ -62,8 +45,8 @@ function Login({ visible, onClose }) {
             name="email"
             label={<span className="login-label">Email</span>}
             rules={[
-              { required: true, message: 'Please input your email!' },
-              { type: 'email', message: 'Please enter a valid email!' },
+              { required: true, message: 'Please input your email' },
+              { type: 'email', message: 'Please enter a valid email' }
             ]}
             style={{ marginBottom: '18px' }}
           >
@@ -73,14 +56,14 @@ function Login({ visible, onClose }) {
           <Form.Item
             name="password"
             label={<span className="login-label">Password</span>}
-            rules={[{ required: true, message: 'Please input your password!' }]}
+            rules={[{ required: true, message: 'Please input your password' }]}
             style={{ marginBottom: '30px' }}
           >
             <Input.Password size="large" className="login-input" />
           </Form.Item>
 
-          <div className="login-button-group">
-            <Button
+          <div style={{ display: 'flex', gap: '15px', justifyContent: 'center' }}>
+            <Button 
               type="primary"
               htmlType="submit"
               className="login-action-btn"
@@ -88,7 +71,7 @@ function Login({ visible, onClose }) {
               Log in
             </Button>
 
-            <Button
+            <Button 
               type="default"
               onClick={handleClear}
               className="login-action-btn"

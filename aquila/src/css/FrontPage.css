@@ -1,17 +1,18 @@
-.frontpage-container {
+.fp-page {
   min-height: 100vh;
   background-color: #ffffff;
   color: #262626;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
   overflow-x: hidden;
 }
 
-.frontpage-header {
+.fp-header {
   position: relative;
   width: 100%;
-  height: 92vh;
+  height: 100vh;
   background-color: #1c1917;
+  background-image: url('../images/aquila_bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -21,17 +22,17 @@
   overflow: hidden;
 }
 
-.frontpage-bg-overlay {
+.fp-bg-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0.40);
   z-index: 1;
 }
 
-.frontpage-nav-container {
+.fp-nav-container {
   position: relative;
   z-index: 2;
   max-width: 1200px;
@@ -43,17 +44,17 @@
   align-items: center;
 }
 
-.frontpage-logo-wrapper {
+.fp-logo-wrapper {
   display: flex;
   align-items: center;
 }
 
-.frontpage-logo-img {
+.fp-logo-img {
   height: 70px;
   object-fit: contain;
 }
 
-.frontpage-nav-links {
+.fp-nav-links {
   display: flex;
   gap: 35px;
   font-size: 13px;
@@ -62,51 +63,59 @@
   text-transform: uppercase;
 }
 
-.frontpage-nav-link-item {
+.fp-nav-link-item {
   color: #e5e5e5;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.frontpage-nav-link-item:hover {
+.fp-nav-link-item:hover {
   color: #fef3c7 !important;
 }
 
-.frontpage-hero-content {
+.fp-hero-content {
   position: relative;
   z-index: 2;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 20px 80px 20px;
+  padding: 0 20px 115px 20px;
 }
 
-.frontpage-est-text {
-  font-size: 12px;
+.fp-est-text {
+  font-size: 16px;
   letter-spacing: 0.25em;
-  color: #d4d4d4;
+  color: #ffffff;
   text-transform: uppercase;
-  margin-bottom: 12px;
-  font-weight: 600;
+  margin-top: 25px;
+  margin-bottom: 4px;
+  font-weight: 400;
 }
 
-.frontpage-hero-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-family: Georgia, serif;
+.fp-hero-title {
+  font-size: clamp(4.6rem, 7.5vw, 6.2rem);
+  font-family: 'Instrument Serif', serif;
   color: #ffffff;
-  line-height: 1.15;
+  line-height: 0.95;
+  margin-top: 23px;
   margin-bottom: 30px;
   font-weight: normal;
-  max-width: 700px;
+  max-width: 800px;
 }
 
-.frontpage-gallery-section {
+.fp-hero-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.fp-gallery-section {
   padding: 80px 20px;
   background-color: #ffffff;
   text-align: center;
 }
 
-.frontpage-section-subtitle {
+.fp-section-subtitle {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.3em;
@@ -115,16 +124,16 @@
   font-weight: 600;
 }
 
-.frontpage-section-title {
+.fp-section-title {
   font-size: clamp(2rem, 3.5vw, 3rem);
-  font-family: Georgia, serif;
+  font-family: 'Instrument Serif', serif;
   color: #171717;
   margin-bottom: 16px;
   font-style: italic;
   font-weight: normal;
 }
 
-.frontpage-section-desc {
+.fp-section-desc {
   color: #525252;
   max-width: 550px;
   margin: 0 auto 50px auto;
@@ -132,7 +141,7 @@
   line-height: 1.6;
 }
 
-.frontpage-gallery-wrapper {
+.fp-gallery-wrapper {
   position: relative;
   max-width: 850px;
   margin: 0 auto;
@@ -141,7 +150,7 @@
   justify-content: center;
 }
 
-.frontpage-arrow-btn {
+.fp-arrow-btn {
   background: transparent;
   border: none;
   cursor: pointer;
@@ -152,15 +161,15 @@
   transition: all 0.3s ease;
 }
 
-.frontpage-arrow-btn:hover {
+.fp-arrow-btn:hover {
   transform: scale(1.25);
-  color: #d97706 !important;
+  color: #740a0a !important;
 }
 
-.frontpage-image-display-box {
+.fp-image-display-box {
   width: 100%;
   aspect-ratio: 16/9;
-  background-color: #171717;
+  background-color: #1c1917;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
@@ -171,7 +180,7 @@
   margin: 0 15px;
 }
 
-.frontpage-gallery-placeholder {
+.fp-gallery-placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -184,28 +193,29 @@
   background-color: #1c1917;
 }
 
-.frontpage-register-section {
+.fp-register-section {
   padding: 90px 20px;
   background-color: #f7f6f2;
   border-top: 1px solid #e7e5e4;
 }
 
-.frontpage-register-grid {
+.fp-register-grid {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 50px;
-  align-items: center;
+  align-items: flex-start;
 }
 
-.frontpage-contact-info {
+.fp-contact-info {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-top: -10px;
 }
 
-.frontpage-contact-list {
+.fp-contact-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -214,18 +224,18 @@
   font-size: 15px;
 }
 
-.frontpage-contact-item {
+.fp-contact-item {
   display: flex;
   align-items: center;
   gap: 12px;
   transition: transform 0.3s ease;
 }
 
-.frontpage-contact-item:hover {
+.fp-contact-item:hover {
   transform: translateX(6px);
 }
 
-.frontpage-card-wrapper {
+.fp-card-wrapper {
   border-radius: 24px;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
   border: 1px solid #f5f5f4;
@@ -233,30 +243,73 @@
   background-color: #ffffff;
 }
 
-.frontpage-form-row {
+.fp-form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
 
-.frontpage-footer {
+.fp-footer {
   padding: 25px 20px;
   background-color: #e3e1dc;
   color: #525252;
   text-align: center;
-  fontSize: 12px;
+  font-size: 12px;
   border-top: 1px solid #d6d3d1;
 }
 
-/* Custom Button & Animation Classes */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, visibility;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .register-hero-btn {
   background-color: #ffffff !important;
   color: #000000 !important;
   border: 1px solid #ffffff !important;
   transition: all 0.3s ease-in-out !important;
+  height: 46px;
+  padding: 0 30px;
+  border-radius: 9999px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
 }
 
 .register-hero-btn:hover {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3) !important;
+}
+
+.inquire-hero-btn {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease-in-out !important;
+  height: 46px;
+  padding: 0 30px;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.inquire-hero-btn:hover {
   background-color: #ffffff !important;
   color: #000000 !important;
   border-color: #ffffff !important;
@@ -269,6 +322,12 @@
   color: #ffffff !important;
   border: 1px solid #000000 !important;
   transition: all 0.3s ease-in-out !important;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  height: 42px;
+  border-radius: 9999px;
+  padding: 0 30px;
+  margin-top: 13px;
 }
 
 .create-account-btn:hover {
@@ -280,10 +339,10 @@
 }
 
 .gallery-image-transition {
-  animation: fadeIn 0.4s ease-in-out;
+  animation: fpFadeIn 0.4s ease-in-out;
 }
 
-@keyframes fadeIn {
+@keyframes fpFadeIn {
   from { opacity: 0.3; transform: scale(0.98); }
   to { opacity: 1; transform: scale(1); }
 }
