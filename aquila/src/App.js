@@ -1,10 +1,21 @@
-import React from 'react';
-import FrontPage from './components/FrontPage.js'; // Make sure the path matches where you saved FrontPage.js
+import React, { useState } from 'react';
+import FrontPage from './components/FrontPage.js';
+import ClientDashboard from './components/ClientDashboard.js';
 
 function App() {
+  const [currentView, setCurrentView] = useState('front'); // 'front' o 'dashboard'
+
   return (
     <div className="App">
-      <FrontPage />
+      {currentView === 'front' ? (
+        <FrontPage 
+          onLoginSuccess={() => setCurrentView('dashboard')} 
+        />
+      ) : (
+        <ClientDashboard 
+          onLogout={() => setCurrentView('front')} 
+        />
+      )}
     </div>
   );
 }

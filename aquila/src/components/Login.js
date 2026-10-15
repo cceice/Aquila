@@ -2,16 +2,33 @@ import React from 'react';
 import { Modal, Card, Form, Input, Button, message } from 'antd';
 import '../css/Login.css';
 
-function Login({ visible, onClose }) {
+function Login({ visible, onClose, onLoginSuccess }) {
   const [form] = Form.useForm();
 
+  // Default credentials para sa client
+  const defaultEmail = 'client@aquila.com';
+  const defaultPassword = 'password123';
+
   const handleLogin = (values) => {
-    message.success({
-      content: 'Logged in successfully!',
-      style: { marginTop: '20vh' },
-    });
-    form.resetFields();
-    onClose();
+    // I-check kung tama ang email at password
+    if (values.email === defaultEmail && values.password === defaultPassword) {
+      message.success({
+        content: 'Logged in successfully!',
+        style: { marginTop: '20vh' },
+      });
+      form.resetFields();
+      onClose();
+      
+      // I-trigger ang paglipat patungo sa ClientDashboard
+      if (onLoginSuccess) {
+        onLoginSuccess();
+      }
+    } else {
+      message.error({
+        content: 'Invalid email or password!',
+        style: { marginTop: '20vh' },
+      });
+    }
   };
 
   const handleClear = () => {
@@ -40,6 +57,10 @@ function Login({ visible, onClose }) {
           layout="vertical"
           onFinish={handleLogin}
           requiredMark={false}
+          initialValues={{
+            email: defaultEmail,
+            password: defaultPassword,
+          }}
         >
           <Form.Item
             name="email"

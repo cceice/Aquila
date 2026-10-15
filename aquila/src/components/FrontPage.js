@@ -47,7 +47,7 @@ function useScrollFadeIn() {
   return domRef;
 }
 
-function App() {
+function App({ onLoginSuccess }) {
   const [form] = Form.useForm();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -339,7 +339,12 @@ function App() {
         &copy; 2026 Aquila Crystal Palace Tagaytay. All rights reserved.
       </footer>
 
-      <Login visible={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+      <Login 
+        visible={isLoginOpen} 
+        onClose={() => setIsLoginOpen(false)} 
+        onLoginSuccess={onLoginSuccess} 
+      />
+        
     </div>
   );
 }
